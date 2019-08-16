@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AHGEventReg.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,11 +16,15 @@ namespace AHGEventReg.Models
             {
                 Id = 1,
                 Name = "Knot Tying",
-                Description = "Learn how to tie a square knot and others",
-                Location = "Room 101"
+                
             };
 
-            return View(session);
+            List<Session> sessions = new List<Session>();
+            sessions.Add(session);
+
+            SessionViewModel svm = new SessionViewModel();
+            svm.sessions = sessions;
+            return View(svm);
         }
 
         public ActionResult Details(int sessionId)

@@ -1,8 +1,31 @@
-﻿@model AHGEventReg.Models.Session
+﻿@model AHGEventReg.ViewModel.SessionViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Html.ActionLink(@Model.Name, "Details", "Session", new { sessionId = @Model.Id }, null)</h2>
+
+
+<h2>Classes</h2>
+@if (Model.sessions == null)
+{
+    <h2>No Sessions to view yet</h2>
+}
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Session</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var session in Model.sessions)
+        {
+            <tr>
+                <td>@Html.ActionLink(session.Name, "Details", "Session", new { sessionId = session.Id }, null) </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
 
