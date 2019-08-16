@@ -21,5 +21,20 @@ namespace AHGEventReg.Models
 
             return View(session);
         }
+
+        public ActionResult Details(int sessionId)
+        {
+            var session = new Session()
+            {
+                Id = 1,
+                Name = "Knot Tying",
+                Description = "Learn how to tie a square knot and others",
+                Location = "Room 101"
+            };
+
+            return View(session);
+        }
     }
+
+     
 }
