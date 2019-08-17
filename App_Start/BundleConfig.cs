@@ -11,6 +11,7 @@ namespace AHGEventReg
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js",
+                        "~/scripts/bootbox.js",                   
                         "~/scripts/datatables/jquery.datatables.js",
                         "~/scripts/datatables/datatables.bootstrap.js"));
 
@@ -27,7 +28,7 @@ namespace AHGEventReg
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-United.css",
-                      "~/content/datatables/css/datatables.bootstrap.css",
+                      "~/content/datatables/css/dataTables.bootstrap.css",
                       "~/Content/site.css"));
         }
     }

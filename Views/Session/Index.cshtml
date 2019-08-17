@@ -1,31 +1,42 @@
-﻿@model AHGEventReg.ViewModel.SessionViewModel
+﻿@model IEnumerable<AHGEventReg.Models.Session>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
+}
 
 
 <h2>Classes</h2>
-@if (Model.sessions == null)
-{
-    <h2>No Sessions to view yet</h2>
-}
-<table class="table table-bordered table-hover">
+
+<table id="sessionsTbl" class="table table-hover table-bordered table-responsive">
     <thead>
         <tr>
             <th>Session</th>
+            <th>Location</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var session in Model.sessions)
+        @foreach (var session in Model)
         {
             <tr>
                 <td>@Html.ActionLink(session.Name, "Details", "Session", new { sessionId = session.Id }, null) </td>
+                <td>@session.Location</td>
             </tr>
 
         }
+
     </tbody>
 </table>
+    <button type="button" onclick="bootbox.alert('Boot box')">Push me</button>
+
+
+@section scripts
+{
+<script>
+$(document).ready(function() {
+    $('#sessionsTbl').DataTable();
+ );
+</script>
+}
 
 

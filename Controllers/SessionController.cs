@@ -12,32 +12,41 @@ namespace AHGEventReg.Models
         // GET: Session
         public ActionResult Index()
         {
-            var session = new Session()
-            {
-                Id = 1,
-                Name = "Knot Tying",
-                
-            };
-
-            List<Session> sessions = new List<Session>();
-            sessions.Add(session);
-
-            SessionViewModel svm = new SessionViewModel();
-            svm.sessions = sessions;
-            return View(svm);
+ 
+            return View(makeData());
         }
 
         public ActionResult Details(int sessionId)
         {
+            List<Session> s = makeData();
+
+            Session session = s[sessionId];
+            return View(session);
+        }
+
+        private List<Session> makeData()
+        {
             var session = new Session()
             {
-                Id = 1,
+                Id = 0,
                 Name = "Knot Tying",
                 Description = "Learn how to tie a square knot and others",
                 Location = "Room 101"
             };
 
-            return View(session);
+            var session1 = new Session()
+            {
+                Id = 1,
+                Name = "Cooking",
+                Description = "The crock pot has nothing over a ducth oven",
+                Location = "Room 102"
+            };
+
+            List<Session> sessions = new List<Session>();
+            sessions.Add(session);
+            sessions.Add(session1);
+
+            return sessions;
         }
     }
 
