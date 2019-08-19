@@ -13,30 +13,39 @@
         <tr>
             <th>Session</th>
             <th>Location</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var session in Model)
         {
             <tr>
-                <td>@Html.ActionLink(session.Name, "Details", "Session", new { sessionId = session.Id }, null) </td>
+                <td>@Html.ActionLink(session.Name, "Details", "Session", new { id = session.Id }, null) </td>
                 <td>@session.Location</td>
+                <td>@Html.ActionLink("Edit", "ViewEdit", "Session", new { id = session.Id }, null) </td>
             </tr>
 
         }
 
     </tbody>
+
+
 </table>
-    <button type="button" onclick="bootbox.alert('Boot box')">Push me</button>
+
+
+@using (Html.BeginForm("ViewNew", "Session"))
+{
+    <button type="submit" class="btn btn-primary">Add New Session</button>
+}
 
 
 @section scripts
 {
-<script>
-$(document).ready(function() {
-    $('#sessionsTbl').DataTable();
- );
-</script>
+    <script>
+        $(document).ready(function () {
+            $('#sessionsTbl').DataTable();
+        }
+    </script>
 }
 
 
